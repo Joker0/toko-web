@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "API Title",
+        "version": "1.0"
+    },
+    "servers": [{ "url": "http://localhost:8000" }],
+    "paths": {
+        "/api/users": {
+            "post": {
+                "description": "Register user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "user": {
+                                    "description": "User example",
+                                    "value": {
+                                        "email": "KU4d2@example.com",
+                                        "password": "password"
+                                    }
+                                }
+                            },
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User Registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "token": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/api/users/login": {
+            "post": {
+                "description": "Login user"
+            }
+        },
+
+        "/api/users/me": {
+            "get": {
+                "description": "Get current user"
+            },
+
+            "patch": {
+                "description": "Update current user"
+            }
+        },
+
+        "/api/users/logout": {
+            "delete": {
+                "description": "Logout user"
+            }
+        }
+    }
+}
